@@ -18,6 +18,6 @@ main
 .word 1
 .ascii "hi\\"
 .asciiz 'a'
-.word '\a'
+.word '\aasd\w \\ \t \r \' \"'
 .word '\''
-.word "\0331231247890asd123"
+.word "\0331231247890asd123\aasd\w \\ \t \r \' \""

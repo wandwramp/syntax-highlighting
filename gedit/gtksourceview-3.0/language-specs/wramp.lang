@@ -49,68 +49,13 @@ WRAMP Assembly spec
           </include>
         </context>
         <context id="instruction-arith" style-ref="instruction">
-          <keyword>add</keyword>
-          <keyword>addu</keyword>
-          <keyword>addi</keyword>
-          <keyword>addui</keyword>
-          <keyword>sub</keyword>
-          <keyword>subu</keyword>
-          <keyword>subi</keyword>
-          <keyword>subui</keyword>
-          <keyword>mult</keyword>
-          <keyword>multu</keyword>
-          <keyword>multi</keyword>
-          <keyword>multui</keyword>
-          <keyword>div</keyword>
-          <keyword>divu</keyword>
-          <keyword>divi</keyword>
-          <keyword>divui</keyword>
-          <keyword>rem</keyword>
-          <keyword>remu</keyword>
-          <keyword>remi</keyword>
-          <keyword>remui</keyword>
-          <keyword>lhi</keyword>
-          <keyword>la</keyword>
+          <match>((add|sub|mult|div|rem)u?i?|lhi|la)</match>
         </context>
         <context id="instruction-bitwise" style-ref="instruction">
-          <keyword>and</keyword>
-          <keyword>andi</keyword>
-          <keyword>or</keyword>
-          <keyword>ori</keyword>
-          <keyword>xor</keyword>
-          <keyword>xori</keyword>
-          <keyword>sll</keyword>
-          <keyword>slli</keyword>
-          <keyword>srl</keyword>
-          <keyword>srli</keyword>
-          <keyword>sra</keyword>
-          <keyword>srai</keyword>
+		  <match>(and|or|xor|sll|sra)i?</match>
         </context>
         <context id="instruction-test" style-ref="instruction">
-          <keyword>slt</keyword>
-          <keyword>sltu</keyword>
-          <keyword>slti</keyword>
-          <keyword>sltui</keyword>
-          <keyword>sgt</keyword>
-          <keyword>sgtu</keyword>
-          <keyword>sgti</keyword>
-          <keyword>sgtui</keyword>
-          <keyword>sle</keyword>
-          <keyword>sleu</keyword>
-          <keyword>slei</keyword>
-          <keyword>sleui</keyword>
-          <keyword>sge</keyword>
-          <keyword>sgeu</keyword>
-          <keyword>sgei</keyword>
-          <keyword>sgeui</keyword>
-          <keyword>seq</keyword>
-          <keyword>sequ</keyword>
-          <keyword>seqi</keyword>
-          <keyword>sequi</keyword>
-          <keyword>sne</keyword>
-          <keyword>sneu</keyword>
-          <keyword>snei</keyword>
-          <keyword>sneui</keyword>
+		  <match>(slt|sgt|sle|sge|seq|sne)u?i?</match>
         </context>
         <context id="instruction-branchJ" style-ref="instruction">
           <keyword>j</keyword>
