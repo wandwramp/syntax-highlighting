@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Author: Daniel Oosterwijk
+Date:   2019-01-30
+Version:   1.0
+WRAMP Assembly spec
+-->
+<language id="wramp" name="WRAMP" version="2.0" _section="Source">
+  <metadata>
+    <property name="mimetypes">text/wramp;application/wramp</property>
+    <property name="globs">*.s;*.S</property>
+    <property name="line-comment-start">#</property>
+  </metadata>
+  <styles>
+    <style id="keyword"             name="Keyword"                map-to="def:keyword"/>
+    <style id="comment"             name="Comment"                map-to="def:comment"/>
+    <style id="string"              name="String"                 map-to="def:string"/>
+    <style id="escape"              name="Escape Character"       map-to="def:special-char"/>
+    <style id="number"              name="Number"                 map-to="def:constant"/>
+    <style id="label"               name="Label"                  map-to="def:identifier"/>
+    <style id="segment"             name="Segment"                map-to="def:preprocessor"/>
+    <style id="directive"           name="Assembler Directive"    map-to="def:statement"/>
+    <style id="instruction"         name="Instruction"            map-to="def:type"/>
+    <!-- Not mapped to any style, will have default text colouring -->
+    <style id="register"            name="Register"/>
+  </styles>
+  <definitions>
+    <context id="wramp">
+      <include>
+        <context id="comment" style-ref="comment">
+          <match>#.*</match>
+        </context>
+        <context id="string" end-at-line-end="true" style-ref="string">
+          <start>"</start>
+          <end>"</end>
+          <include>
+            <context id="string-escape" style-ref="escape">
+              <match>\\([rnta\\'"]|0[0-9]*)</match>
+            </context>
+          </include>
+        </context>
+        <context id="char" end-at-line-end="true" style-ref="string">
+          <start>'</start>
+          <end>'</end>
+          <include>
+            <context id="char-escape" style-ref="escape">
+              <match>\\([rnta\'"]|0[0-9]*)</match>
+            </context>
+          </include>
+        </context>
+        <context id="instruction-arith" style-ref="instruction">
+          <keyword>add</keyword>
+          <keyword>addu</keyword>
+          <keyword>addi</keyword>
+          <keyword>addui</keyword>
+          <keyword>sub</keyword>
+          <keyword>subu</keyword>
+          <keyword>subi</keyword>
+          <keyword>subui</keyword>
+          <keyword>mult</keyword>
+          <keyword>multu</keyword>
+          <keyword>multi</keyword>
+          <keyword>multui</keyword>
+          <keyword>div</keyword>
+          <keyword>divu</keyword>
+          <keyword>divi</keyword>
+          <keyword>divui</keyword>
+          <keyword>rem</keyword>
+          <keyword>remu</keyword>
+          <keyword>remi</keyword>
+          <keyword>remui</keyword>
+          <keyword>lhi</keyword>
+          <keyword>la</keyword>
+        </context>
+        <context id="instruction-bitwise" style-ref="instruction">
+          <keyword>and</keyword>
+          <keyword>andi</keyword>
+          <keyword>or</keyword>
+          <keyword>ori</keyword>
+          <keyword>xor</keyword>
+          <keyword>xori</keyword>
+          <keyword>sll</keyword>
+          <keyword>slli</keyword>
+          <keyword>srl</keyword>
+          <keyword>srli</keyword>
+          <keyword>sra</keyword>
+          <keyword>srai</keyword>
+        </context>
+        <context id="instruction-test" style-ref="instruction">
+          <keyword>slt</keyword>
+          <keyword>sltu</keyword>
+          <keyword>slti</keyword>
+          <keyword>sltui</keyword>
+          <keyword>sgt</keyword>
+          <keyword>sgtu</keyword>
+          <keyword>sgti</keyword>
+          <keyword>sgtui</keyword>
+          <keyword>sle</keyword>
+          <keyword>sleu</keyword>
+          <keyword>slei</keyword>
+          <keyword>sleui</keyword>
+          <keyword>sge</keyword>
+          <keyword>sgeu</keyword>
+          <keyword>sgei</keyword>
+          <keyword>sgeui</keyword>
+          <keyword>seq</keyword>
+          <keyword>sequ</keyword>
+          <keyword>seqi</keyword>
+          <keyword>sequi</keyword>
+          <keyword>sne</keyword>
+          <keyword>sneu</keyword>
+          <keyword>snei</keyword>
+          <keyword>sneui</keyword>
+        </context>
+        <context id="instruction-branchJ" style-ref="instruction">
+          <keyword>j</keyword>
+          <keyword>jr</keyword>
+          <keyword>jal</keyword>
+          <keyword>jalr</keyword>
+        </context>
+        <context id="instruction-branchRelative" style-ref="instruction">
+          <keyword>beqz</keyword>
+          <keyword>bnez</keyword>
+        </context>
+        <context id="instruction-memory" style-ref="instruction">
+          <keyword>lw</keyword>
+          <keyword>sw</keyword>
+        </context>
+        <context id="instruction-special" style-ref="instruction">
+          <keyword>break</keyword>
+          <keyword>syscall</keyword>
+        </context>
+        <context id="instruction-specialProtected" style-ref="instruction">
+          <keyword>movgs</keyword>
+          <keyword>movsg</keyword>
+        </context>
+        <context id="instruction-specialProtectedRfe" style-ref="instruction">
+          <keyword>rfe</keyword>
+        </context>
+        <context id="general-register" style-ref="register">
+          <match>\$(1[0-5]|\d|sp|ra)</match>
+        </context>
+        <context id="special-register" style-ref="register">
+          <match>\$(cctrl|estat|icount|ccount|evec|ear|esp|ers)</match>
+        </context>
+        <context id="segment" style-ref="segment">
+          <match>\.(text|data|bss)</match>
+        </context>
+        <context id="directive-string" style-ref="directive">
+          <match>\.asciiz?</match>
+        </context>
+        <context id="directive-space" style-ref="directive">
+          <match>\.(word|space)</match>
+        </context>
+        <context id="directive-global" style-ref="directive">
+          <match>\.global [a-zA-Z_][a-zA-Z0-9_]*</match>
+        </context>
+        <context id="directive-equ" style-ref="directive">
+          <match>\.equ</match>
+        </context>
+        <context id="label" style-ref="label">
+          <match>[a-zA-Z_][a-zA-Z0-9_]*:?</match>
+        </context>
+        <context id="number-hex" style-ref="number">
+          <match>0x[0-9a-fA-F]+</match>
+        </context>
+        <context id="number-decimal" style-ref="number">
+          <match>[+-]?\d+</match>
+        </context>
+      </include>
+    </context>
+  </definitions>
+</language>
+<!--vim: set ft=xml:-->
+

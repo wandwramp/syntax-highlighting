@@ -1,6 +1,6 @@
 .text
 .global main
-main: #Inline comment!
+main: #Inline comment! (
 	addu $13, $1, $sp
 	movsg $ra, $cctrl
 	addui $2, $0, 0x0F1
@@ -11,7 +11,7 @@ main: #Inline comment!
 .equ things, 123
 .bad directive
 main
-# Comment with "string"
+# Comment with "string" and "\escape" )
 .data
 .bss
 .space 1
@@ -20,3 +20,4 @@ main
 .asciiz 'a'
 .word '\a'
 .word '\''
+.word "\0331231247890asd123"

@@ -37,10 +37,10 @@ syn keyword specialProtectedRfe rfe
 
 " Assembler directives
 syn match segment '\.text\|\.data\|\.bss'
-syn match directiveGlobal '\.global [a-zA-Z0-9_]\+'
+syn match directiveGlobal '\.global [a-zA-Z_][a-zA-Z0-9_]*'
 syn match directive '\.word\|\.space'
 syn match directive '\.asciiz\|\.ascii'
-syn match directive '\.equ [a-zA-Z0-9_]\+,'
+syn match directive '\.equ'
 
 " Registers
 syn match generalRegister '\$\d'
@@ -62,17 +62,18 @@ syn region character start="'" end="'" contains=escape
 
 " Other misc stuff
 syn match escape '\\[rnta\'"]' contained
+syn match escape '\\0[0-9]*' contained
 
 " Link custom groups to colours
-hi def link arith				Type
-hi def link bitwise				Type
-hi def link test				Type
-hi def link branchJ				Type
-hi def link branchRelative		Type
-hi def link memory				Type
-hi def link special				Type
-hi def link specialProtected	Type
-hi def link specialRfe			Type
+hi def link arith				StorageClass
+hi def link bitwise				StorageClass
+hi def link test				StorageClass
+hi def link branchJ				StorageClass
+hi def link branchRelative		StorageClass
+hi def link memory				StorageClass
+hi def link special				StorageClass
+hi def link specialProtected	StorageClass
+hi def link specialRfe			StorageClass
 hi def link segment				Define
 hi def link directiveGlobal		Macro
 hi def link directive			Special

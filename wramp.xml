@@ -1,0 +1,13 @@
+<!--
+Author: Daniel Oosterwijk
+Date:   2019-01-30
+Version:   1.0
+WRAMP Assembly spec
+-->
+<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+	<mime-type type="text/wramp">
+        <comment>WRAMP Assembly</comment>
+        <glob pattern="*.s;*.S"/>
+    </mime-type>
+</mime-info>
+
