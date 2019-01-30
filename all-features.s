@@ -20,4 +20,6 @@ main
 .asciiz 'a'
 .word '\aasd\w \\ \t \r \' \"'
 .word '\''
+.word '\03123'
+.word '\03123a'
 .word "\0331231247890asd123\aasd\w \\ \t \r \' \""

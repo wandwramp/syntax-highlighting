@@ -21,6 +21,7 @@ WRAMP Assembly spec
     <style id="segment"             name="Segment"                map-to="def:preprocessor"/>
     <style id="directive"           name="Assembler Directive"    map-to="def:statement"/>
     <style id="instruction"         name="Instruction"            map-to="def:type"/>
+    <style id="illegal"		        name="Illegal Construct"      map-to="def:error"/>
     <!-- Not mapped to any style, will have default text colouring -->
     <style id="register"            name="Register"/>
   </styles>
@@ -37,6 +38,9 @@ WRAMP Assembly spec
             <context id="string-escape" style-ref="escape">
               <match>\\([rnta\\'"]|0[0-9]*)</match>
             </context>
+			<context id="string-unknown-escape" style-ref="illegal">
+			  <match>\\.</match>
+			</context>
           </include>
         </context>
         <context id="char" end-at-line-end="true" style-ref="string">
@@ -44,8 +48,11 @@ WRAMP Assembly spec
           <end>'</end>
           <include>
             <context id="char-escape" style-ref="escape">
-              <match>\\([rnta\'"]|0[0-9]*)</match>
+              <match>\\([rnta\\'"]|0[0-9]*)</match>
             </context>
+			<context id="char-unknown-escape" style-ref="illegal">
+			  <match>\\.</match>
+			</context>
           </include>
         </context>
         <context id="instruction-arith" style-ref="instruction">
@@ -58,10 +65,7 @@ WRAMP Assembly spec
 		  <match>(slt|sgt|sle|sge|seq|sne)u?i?</match>
         </context>
         <context id="instruction-branchJ" style-ref="instruction">
-          <keyword>j</keyword>
-          <keyword>jr</keyword>
-          <keyword>jal</keyword>
-          <keyword>jalr</keyword>
+		  <match>j(al)?r?</match>
         </context>
         <context id="instruction-branchRelative" style-ref="instruction">
           <keyword>beqz</keyword>
