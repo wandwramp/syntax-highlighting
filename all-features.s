@@ -7,19 +7,25 @@ main: #Inline comment! (
 	addui $1, $0, -123
 	la $1, main
 	sw $1, main+1($sp)
+	rfe
 
-.equ things, 123
-.bad directive ujguyguibi
-main
+	.equ things, 123
+	
+rfe_label:
+label_rfe:
+
 # Comment with "string" and "\escape" )
 .data
 .bss
-.space 1
-.word 1
-.ascii "hi\\"
-.asciiz 'a'
-.word '\aasd\w \\ \t \r \' \"'
-.word '\''
-.word '\03123'
-.word '\03123a'
-.word "\0331231247890asd123\aasd\w \\ \t \r \' \""
+	.space 1
+	.word 1
+	.ascii "hi\\"
+	.asciiz 'a'
+	.word '\w'
+	.word '\''
+	.word '\03123'
+	.word "\0331231247890asd123\aasd\w \\ \t \r \' \""
+
+
+.bad directive
+label_is_invalid

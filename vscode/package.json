@@ -1,7 +1,7 @@
 {
     "name": "wramp",
     "displayName": "WRAMP",
-    "description": "WRAMP assembly syntax highlighting",
+    "description": "WRAMP Assembly syntax highlighting",
     "version": "0.0.1",
     "engines": {
         "vscode": "^1.30.0"

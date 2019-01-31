@@ -56,35 +56,31 @@ WRAMP Assembly spec
           </include>
         </context>
         <context id="instruction-arith" style-ref="instruction">
-          <match>((add|sub|mult|div|rem)u?i?|lhi|la)</match>
+          <match>((add|sub|mult|div|rem)u?i?|lhi|la)\s</match>
         </context>
         <context id="instruction-bitwise" style-ref="instruction">
-		  <match>(and|or|xor|sll|sra)i?</match>
+		  <match>(and|or|xor|sll|sra)i?\s</match>
         </context>
         <context id="instruction-test" style-ref="instruction">
-		  <match>(slt|sgt|sle|sge|seq|sne)u?i?</match>
+		  <match>(slt|sgt|sle|sge|seq|sne)u?i?\s</match>
         </context>
         <context id="instruction-branchJ" style-ref="instruction">
-		  <match>j(al)?r?</match>
+		  <match>j(al)?r?\s</match>
         </context>
         <context id="instruction-branchRelative" style-ref="instruction">
-          <keyword>beqz</keyword>
-          <keyword>bnez</keyword>
+		  <match>b(eq|ne)z\s</match>
         </context>
         <context id="instruction-memory" style-ref="instruction">
-          <keyword>lw</keyword>
-          <keyword>sw</keyword>
+		  <match>[ls]w\s</match>
         </context>
         <context id="instruction-special" style-ref="instruction">
-          <keyword>break</keyword>
-          <keyword>syscall</keyword>
+          <match>(break|syscall)</match>
         </context>
         <context id="instruction-specialProtected" style-ref="instruction">
-          <keyword>movgs</keyword>
-          <keyword>movsg</keyword>
+          <match>mov(gs|sg)\s</match>
         </context>
         <context id="instruction-specialProtectedRfe" style-ref="instruction">
-          <keyword>rfe</keyword>
+          <match>rfe</match>
         </context>
         <context id="general-register" style-ref="register">
           <match>\$(1[0-5]|\d|sp|ra)</match>

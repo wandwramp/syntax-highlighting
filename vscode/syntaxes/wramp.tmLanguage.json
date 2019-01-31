@@ -121,39 +121,39 @@
 			"patterns": [
 				{
 					"name": "support.function.instruction.arithmetic.wramp",
-					"match": "((add|sub|mult|div|rem)u?i?|lhi|la)"
+					"match": "((add|sub|mult|div|rem)u?i?|lhi|la)\\s"
 				},
 				{
 					"name": "support.function.instruction.bitwise.wramp",
-					"match": "((and|or|xor|sll|sra)i?)"
+					"match": "((and|or|xor|sll|sra)i?)\\s"
 				},
 				{
 					"name": "support.function.instruction.test.wramp",
-					"match": "((slt|sgt|sle|sge|seq|sne)u?i?)"
+					"match": "((slt|sgt|sle|sge|seq|sne)u?i?)\\s"
 				},
 				{
 					"name": "support.function.instruction.branch.jump.wramp",
-					"match": "j(al)?r?"
+					"match": "j(al)?r?\\s"
 				},
 				{
 					"name": "support.function.instruction.branch.relative.wramp",
-					"match": "b(eq|ne)z"
+					"match": "b(eq|ne)z\\s"
 				},
 				{
 					"name": "support.function.instruction.memory.wramp",
-					"match": "(lw|sw)"
+					"match": "(lw|sw)\\s"
 				},
 				{
 					"name": "support.function.instruction.special.wramp",
-					"match": "(break|syscall)"
+					"match": "(break|syscall)\\s"
 				},
 				{
 					"name": "support.function.instruction.special.protected.wramp",
-					"match": "mov(gs|sg)"
+					"match": "mov(gs|sg)\\s"
 				},
 				{
 					"name": "support.function.instruction.special.protected.rfe.wramp",
-					"match": "rfe"
+					"match": "rfe\\s"
 				}
 			]
 		},
