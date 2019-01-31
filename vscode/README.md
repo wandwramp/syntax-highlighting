@@ -17,8 +17,6 @@ The following screenshots show all the language features, and some real example 
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 0.0.1
 
 Initial release.
