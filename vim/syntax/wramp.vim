@@ -73,7 +73,7 @@ hi def link branchRelative		StorageClass
 hi def link memory				StorageClass
 hi def link special				StorageClass
 hi def link specialProtected	StorageClass
-hi def link specialRfe			StorageClass
+hi def link specialProtectedRfe	StorageClass
 hi def link segment				Define
 hi def link directiveGlobal		Macro
 hi def link directive			Special
