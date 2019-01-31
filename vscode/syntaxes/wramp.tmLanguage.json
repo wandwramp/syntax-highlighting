@@ -1,0 +1,168 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "WRAMP Assembly",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#segments"
+		},
+		{
+			"include": "#directives"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#chars"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#registers"
+		},
+		{
+			"include": "#instructions"
+		},
+		{
+			"include": "#labels"
+		}
+	],
+	"repository": {
+		"comments": {
+			"patterns": [{
+				"name": "comment.line.wramp",
+				"match": "#.*"
+			}]
+		},
+		"segments": {
+			"patterns": [{
+				"name": "keyword.control.segment.wramp",
+				"match": "^\\.(text|data|bss)$"
+			}]
+		},
+		"directives": {
+			"patterns": [
+				{
+					"name": "keyword.control.directive.string.wramp",
+					"match": "\\.asciiz?"
+				},
+				{
+					"name": "keyword.control.directive.space.wramp",
+					"match": "\\.(word|space)"
+				},
+				{
+					"name": "keyword.control.directive.global.wramp",
+					"match": "\\.global [a-zA-Z_][a-zA-Z0-9_]*"
+				},
+				{
+					"name": "keyword.control.directive.equ.wramp",
+					"match": "\\.equ"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.wramp",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.wramp",
+					"match": "\\\\([rnta\\\\'\"]|0[0-9]*)"
+				},
+				{
+					"name": "invalid.illegal.unknown-escape.wramp",
+					"match": "\\\\."
+				}
+			]
+		},
+		"chars": {
+			"name": "string.quoted.single.wramp",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+				{
+					"name": "constant.character.escape.wramp",
+					"match": "\\\\([rnta\\\\'\"]|0[0-9]*)"
+				},
+				{
+					"name": "invalid.illegal.unknown-escape.wramp",
+					"match": "\\\\."
+				}
+			]
+		},
+		"numbers": {
+			"patterns": [
+				{
+					"name": "constant.numeric.hexadecimal.wramp",
+					"match": "0x[0-9a-fA-F]+"
+				},
+				{
+					"name": "constant.numeric.decimal.wramp",
+					"match": "[+-]?[0-9]+"
+				}
+			]
+		},
+		"registers": {
+			"patterns": [
+				{
+					"name": "variable.register.general.wramp",
+					"match": "\\$(1[0-5]|[0-9]|sp|ra)"
+				},
+				{
+					"name": "variable.register.special.wramp",
+					"match": "\\$(cctrl|estat|icount|ccount|evec|ear|esp|ers)"
+				}
+			]
+		},
+		"instructions": {
+			"patterns": [
+				{
+					"name": "support.function.instruction.arithmetic.wramp",
+					"match": "((add|sub|mult|div|rem)u?i?|lhi|la)"
+				},
+				{
+					"name": "support.function.instruction.bitwise.wramp",
+					"match": "((and|or|xor|sll|sra)i?)"
+				},
+				{
+					"name": "support.function.instruction.test.wramp",
+					"match": "((slt|sgt|sle|sge|seq|sne)u?i?)"
+				},
+				{
+					"name": "support.function.instruction.branch.jump.wramp",
+					"match": "j(al)?r?"
+				},
+				{
+					"name": "support.function.instruction.branch.relative.wramp",
+					"match": "b(eq|ne)z"
+				},
+				{
+					"name": "support.function.instruction.memory.wramp",
+					"match": "(lw|sw)"
+				},
+				{
+					"name": "support.function.instruction.special.wramp",
+					"match": "(break|syscall)"
+				},
+				{
+					"name": "support.function.instruction.special.protected.wramp",
+					"match": "mov(gs|sg)"
+				},
+				{
+					"name": "support.function.instruction.special.protected.rfe.wramp",
+					"match": "rfe"
+				}
+			]
+		},
+		"labels": {
+			"patterns": [{
+				"name": "keyword.variable.label.wramp",
+				"match": "[a-zA-Z_][a-zA-Z0-9_]*:?"
+			}]
+		}
+	},
+	"scopeName": "source.wramp"
+}

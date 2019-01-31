@@ -9,7 +9,7 @@ main: #Inline comment! (
 	sw $1, main+1($sp)
 
 .equ things, 123
-.bad directive
+.bad directive ujguyguibi
 main
 # Comment with "string" and "\escape" )
 .data

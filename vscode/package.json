@@ -1,0 +1,25 @@
+{
+    "name": "wramp",
+    "displayName": "WRAMP",
+    "description": "WRAMP assembly syntax highlighting",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.30.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "wramp",
+            "aliases": ["WRAMP Assembly", "wramp"],
+            "extensions": [".s",".S"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "wramp",
+            "scopeName": "source.wramp",
+            "path": "./syntaxes/wramp.tmLanguage.json"
+        }]
+    }
+}
