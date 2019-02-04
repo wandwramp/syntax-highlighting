@@ -125,7 +125,7 @@
 				},
 				{
 					"name": "support.function.instruction.bitwise.wramp",
-					"match": "((and|or|xor|sll|sra)i?)\\s"
+					"match": "((and|or|xor|sll|sra|srl)i?)\\s"
 				},
 				{
 					"name": "support.function.instruction.test.wramp",

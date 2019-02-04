@@ -59,7 +59,7 @@ WRAMP Assembly spec
           <match>((add|sub|mult|div|rem)u?i?|lhi|la)\s</match>
         </context>
         <context id="instruction-bitwise" style-ref="instruction">
-		  <match>(and|or|xor|sll|sra)i?\s</match>
+		  <match>(and|or|xor|sll|sra|srl)i?\s</match>
         </context>
         <context id="instruction-test" style-ref="instruction">
 		  <match>(slt|sgt|sle|sge|seq|sne)u?i?\s</match>
