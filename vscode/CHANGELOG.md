@@ -1,5 +1,5 @@
 # Change Log
-All notable changes to the "wramp" extension will be documented in this file.
+All notable changes to the "wramp-syntax" extension will be documented in this file.
 
-## 0.0.1
+## 1.0.0
 - Initial release

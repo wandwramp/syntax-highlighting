@@ -1,8 +1,9 @@
 {
-    "name": "wramp",
-    "displayName": "WRAMP",
+    "name": "wramp-syntax",
+    "displayName": "WRAMP Syntax Highlighting",
     "description": "WRAMP Assembly syntax highlighting",
-    "version": "0.0.1",
+    "version": "1.0.0",
+    "publisher": "wanduow",
     "engines": {
         "vscode": "^1.30.0"
     },
