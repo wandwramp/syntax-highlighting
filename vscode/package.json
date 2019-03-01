@@ -2,8 +2,13 @@
     "name": "wramp-syntax",
     "displayName": "WRAMP Syntax Highlighting",
     "description": "WRAMP Assembly syntax highlighting",
-    "version": "1.0.0",
+    "icon": "images/icon.png",
+    "version": "1.0.5",
     "publisher": "wanduow",
+    "repository": {
+	"type": "git",
+	"url": "https://github.com/wandwramp/syntax-highlighting.git"
+    },
     "engines": {
         "vscode": "^1.30.0"
     },
